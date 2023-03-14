@@ -31,7 +31,7 @@ def chatbot(input_text):
         model="gpt-3.5-turbo",
         messages=messages,
         temperature=0.7,
-        max_tokens=150,
+        max_tokens=1000,
         n=1,
         stop=None,
         frequency_penalty=0,
