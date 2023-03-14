@@ -7,7 +7,7 @@ import requests
 openai.api_key = st.secrets["api_secret"]
 
 #Creating the chatbot interface
-st.title("chatBot : Streamlit + openAI")
+st.title("MungerGPT - Think like Uncle Charlie")
 
 response = requests.get("https://raw.githubusercontent.com/jamesrothmann/askunclecharlie/main/unclecharlieprompt.txt")
 prompt_text = response.text.strip()
