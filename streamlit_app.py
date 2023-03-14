@@ -26,7 +26,7 @@ def chatbot(input_text):
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Give me an overview of mental models"},
-        {"role": "assistant", "content": prompt_text}
+        {"role": "assistant", "content": prompt_text},
         {"role": "user", "content": input_text}
     ]
     response = openai.ChatCompletion.create(
