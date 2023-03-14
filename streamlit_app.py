@@ -28,10 +28,10 @@ def chatbot(input_text):
         {"role": "user", "content": input_text}
     ]
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo-0301",
         messages=messages,
         temperature=0.7,
-        max_tokens=1000,
+        max_tokens=500,
         n=1,
         stop=None,
         frequency_penalty=0,
