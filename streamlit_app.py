@@ -31,7 +31,7 @@ def chatbot(input_text):
         frequency_penalty=0,
         presence_penalty=0
     )
-    answer = response.choices[0].text.strip()
+    answer = response.choices[0].message['content'].strip()
     return answer
 
 # We will get the user's input by calling the get_text function
