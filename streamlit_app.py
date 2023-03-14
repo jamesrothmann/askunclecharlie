@@ -9,8 +9,7 @@ openai.api_key = st.secrets["api_secret"]
 #Creating the chatbot interface
 st.title("chatBot : Streamlit + openAI")
 
-# Retrieve the prompt text from the GitHub repo
-response = requests.get("https://raw.githubusercontent.com/jamesrothmann/askunclecharlie/blob/main/unclecharlieprompt.txt")
+response = requests.get("https://raw.githubusercontent.com/jamesrothmann/askunclecharlie/main/unclecharlieprompt.txt")
 prompt_text = response.text.strip()
 
 
@@ -24,13 +23,14 @@ if 'past' not in st.session_state:
 # Define the chatbot function
 def chatbot(input_text):
     messages = [
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Give me an overview of mental models"},
-        {"role": "assistant", "content": prompt_text},
+        {"role": "system", "content": prompt_text},
+#        {"role": "user", "content": "Give me an overview of mental models"},
+#       {"role": "assistant", "content": prompt_text},
         {"role": "user", "content": input_text}
     ]
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo-0301",
+  #      model="gpt-3.5-turbo-0301",
+        model="gpt-4",
         messages=messages,
         temperature=0.7,
         max_tokens=500,
