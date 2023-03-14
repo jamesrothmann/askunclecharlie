@@ -1,12 +1,18 @@
 import openai
 import streamlit as st
 from streamlit_chat import message
+import requests
 
 # Set up the OpenAI API key
 openai.api_key = st.secrets["api_secret"]
 
 #Creating the chatbot interface
 st.title("chatBot : Streamlit + openAI")
+
+# Retrieve the prompt text from the GitHub repo
+response = requests.get("https://raw.githubusercontent.com/jamesrothmann/askunclecharlie/blob/main/unclecharlieprompt.txt")
+prompt_text = response.text.strip()
+
 
 # Storing the chat
 if 'generated' not in st.session_state:
@@ -18,7 +24,7 @@ if 'past' not in st.session_state:
 # Define the chatbot function
 def chatbot(input_text):
     messages = [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": prompt_text},
         {"role": "user", "content": input_text}
     ]
     response = openai.ChatCompletion.create(
